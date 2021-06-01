@@ -25,6 +25,7 @@ namespace TrackYourTax.Views
             Location location = (Location)McDataGrid.SelectedItem;
             Repository.Access.Locations.Remove(location);
             McDataGrid.Items.Refresh();
+            Repository.Access.UpdateRoutes();
         }
 
         private void NewButton_Click(object sender, RoutedEventArgs e)
@@ -35,6 +36,7 @@ namespace TrackYourTax.Views
                 LocationCategory = LocationCategory.ErsteTaetigkeitsstaette,
             });
             McDataGrid.Items.Refresh();
+            Repository.Access.UpdateRoutes();
 
         }
     }

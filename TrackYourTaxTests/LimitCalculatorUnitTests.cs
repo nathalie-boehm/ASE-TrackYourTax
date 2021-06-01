@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
-using TrackYourTax.BusinessLogic;
+using TrackYourTax.BusinessLogicDomain;
 using TrackYourTax.DataObjects;
 
 namespace TrackYourTaxTests

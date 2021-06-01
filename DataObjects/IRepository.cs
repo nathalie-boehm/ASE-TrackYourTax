@@ -8,6 +8,8 @@ namespace TrackYourTax.DataObjects
         List<Location> Locations { get; } 
         List<Ride> Rides { get; }
         List<Route> Routes { get;  } 
-        List<Settings> Settings { get; } 
+        List<Settings> Settings { get; }
+        void UpdateRoutes();
+        Settings GetCurrentSetting();
     }
 }

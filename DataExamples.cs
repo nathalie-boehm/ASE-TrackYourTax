@@ -21,6 +21,7 @@ namespace TrackYourTax
             });
 
             Repository.Access.Settings.Add(new Settings(){Year=2020, KilometerPrice = 30, Income = 12000, CateringAdditionalExpenses = 14, CommercialFlatCharge = 1000});
+            Repository.Access.Settings.Add(new Settings(){Year=2019, KilometerPrice = 30, Income = 11000, CateringAdditionalExpenses = 14, CommercialFlatCharge = 1000});
 
             UpdateRoutes();
         }

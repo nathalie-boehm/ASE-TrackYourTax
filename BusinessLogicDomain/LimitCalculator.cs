@@ -1,13 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using TrackYourTax.DataObjects;
 using TrackYourTax.Enums;
 
-namespace TrackYourTax.BusinessLogic
+namespace TrackYourTax.BusinessLogicDomain
 {
     public class LimitCalculator
     {
@@ -33,9 +30,11 @@ namespace TrackYourTax.BusinessLogic
             return _incomeSteps.FirstOrDefault(step => step.Item1 <= income).Item2;
         }
 
+        
+
         public int GetExtraordinaryExpenseLimit()
         {
-            var setting = _repository.Settings.OrderByDescending(setting => setting.Year).First();
+            var setting = _repository.GetCurrentSetting();
             var category = GetIncomeCategory(setting);
             var percentage = _percentageCalculate[category];
 

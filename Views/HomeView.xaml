@@ -14,15 +14,8 @@
     <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-            <iconPacks:PackIconMaterialDesign HorizontalAlignment="Center"
-                                              Foreground="{StaticResource PrimaryDarkBrush}"
-                                              Width="100" Height="100"
-                                              Kind="Home"/>
-            <TextBlock FontSize="40" FontWeight="Bold" 
-                       VerticalAlignment="Center" HorizontalAlignment="Center" 
-                       Foreground="{StaticResource PrimaryDarkBrush}"
-                       Text="{Binding Title}"/>
-        </StackPanel>
+                    VerticalAlignment="Center"/>
+        <ProgressBar Minimum="0" Maximum="100" x:Name="CommercialProgress"  Height="59" Margin="30,89,58,0" VerticalAlignment="Top"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="61,47,0,0" VerticalAlignment="Top" Width="163"/>
     </Grid>
 </UserControl>
