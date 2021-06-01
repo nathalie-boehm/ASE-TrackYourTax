@@ -13,11 +13,17 @@ namespace TrackYourTax.Views
         {
             InitializeComponent();
             SetCommercialProgressBar();
+            SetAdditionalCostsProgressBar();
         }
 
         protected void SetCommercialProgressBar()
         {
             CommercialProgress.Value = _observer.GetCommercialCostProgress();
+        }
+
+        protected void SetAdditionalCostsProgressBar()
+        {
+            AdditionalCosts.Value = _observer.GetExceptionalCostProgress();
         }
     }
 }

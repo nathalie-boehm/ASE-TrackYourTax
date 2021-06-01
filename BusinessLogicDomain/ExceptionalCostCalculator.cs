@@ -15,10 +15,10 @@ namespace TrackYourTax.BusinessLogicDomain
         };
         private static readonly Dictionary<ExpensesCategory, decimal> ExpenseFactor = new Dictionary<ExpensesCategory, decimal>
         {
-            { ExpensesCategory.ArbeitsmittelArbeitsplatz, 0.5m },
-            { ExpensesCategory.ArbeitsmittelSonsitige, 1m },
-            { ExpensesCategory.Krankheitskosten, 0m },
-            { ExpensesCategory.WerbungskostenSonstige, 1m },
+            { ExpensesCategory.ArbeitsmittelArbeitsplatz, 0m },
+            { ExpensesCategory.ArbeitsmittelSonsitige, 0m },
+            { ExpensesCategory.Krankheitskosten, 1m },
+            { ExpensesCategory.WerbungskostenSonstige, 0m },
         };
 
         public ExceptionalCostCalculator(IRepository repository) : base(repository)

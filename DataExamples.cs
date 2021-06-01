@@ -31,7 +31,7 @@ namespace TrackYourTax
             Repository.Access.Routes.AddRange(
                 Repository.Access.Locations.Where(home => home.LocationCategory == LocationCategory.Wohnort).SelectMany(home =>
                     Repository.Access.Locations.Where(location => location.LocationCategory != LocationCategory.Wohnort)
-                        .Select(location => new Route {Destination = location, Start = home, Distance = 0}))
+                        .Select(location => new Route {Destination = location, Start = home, Distance = 10}))
                     .Where(newRoute => ! Repository.Access.Routes.Any(route => route.Equals(newRoute))));
         }
     }
