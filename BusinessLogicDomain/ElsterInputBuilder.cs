@@ -31,6 +31,8 @@ namespace TrackYourTax.BusinessLogicDomain
 
         public void ConstructRidesSecondEmployment()
         {
+            var rides = _repository.Rides.FindAll(ride =>
+                ride.Route.Destination.LocationCategory == LocationCategory.ZweiteTaetigkeitsstaette);
         }
 
         public void ConstructCateringAdditionalExpenses()
