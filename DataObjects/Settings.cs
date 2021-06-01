@@ -11,5 +11,22 @@ namespace TrackYourTax.DataObjects
         public int KilometerPrice { get; set; }
         public int CateringAdditionalExpenses { get; set; }
         public int CommercialFlatCharge { get; set; }
+
+        public override bool Equals(object? obj)
+        {
+            var setting = obj as Settings;
+
+            return Equals(setting?.Year, this.Year);
+        }
+
+        protected bool Equals(Settings other)
+        {
+            return Equals(this.Year, other.Year);
+        }
+
+        public override int GetHashCode()
+        {
+            return Year != null ? Year : 0;
+        }
     }
 }

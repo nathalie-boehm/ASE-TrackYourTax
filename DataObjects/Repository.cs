@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TrackYourTax.DataObjects
 {
-    public class Repository
+    public class Repository: IRepository
     {
         public static readonly Repository Access = new Repository();
         public List<Expenses> Expenses { get; set; } = new List<Expenses>();
