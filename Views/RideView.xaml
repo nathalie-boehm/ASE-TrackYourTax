@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="TrackYourTax.Views.RideView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:vm="clr-namespace:TrackYourTax.ViewModels"
+             xmlns:collections="clr-namespace:System.Collections;assembly=System.Runtime"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:RideViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="144*"/>
+            <RowDefinition Height="175*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Margin="12,21,26,48.333"
+Name="McDataGrid" RowHeight="30" ColumnWidth="100"
+ColumnHeaderHeight="30" HeadersVisibility="Column"
+Background="LightGray" RowBackground="LightYellow"
+AlternatingRowBackground="LightBlue"
+BorderBrush="Gray" BorderThickness="5" AutoGenerateColumns="False" Grid.RowSpan="2"
+>
+
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Strecke" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Route}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DataTemplate.Resources>
+                                <vm:RouteList x:Key="RouteList" />
+                            </DataTemplate.Resources>
+                            <ComboBox Height="22"
+                                      ItemsSource="{StaticResource RouteList}"
+                                      SelectedItem="{Binding Route}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+
+
+
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Start">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Start}" Margin="4"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Start, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Ankunft">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding End}" Margin="4"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding End, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn
+                    Header="Anzahl Anwesenheits-Tage"
+                    Width="220"
+                    Binding="{Binding AttendanceCounter}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Foreground" Value="Blue"/>
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn
+                    Header="Anzahl Abwesenheits-Tage"
+                    Width="220"
+                    Binding="{Binding AbsenceCounter}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Foreground" Value="Blue"/>
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="67,11,0,0"
+                x:Name="DeleteButton" VerticalAlignment="Top" Width="53" Click="DeleteButton_Click" Grid.Row="0"
+                Grid.RowSpan="2" />
+        <Button Grid.Row="0" Content="New" Height="23" HorizontalAlignment="Left" Margin="12,10,0,0"
+                x:Name="NewButton" VerticalAlignment="Top" Width="39" Click="NewButton_Click" />
+        <Button Grid.Row="0" Content="Start" Height="23" HorizontalAlignment="Left" Margin="140,11,0,0"
+                x:Name="StartStop" VerticalAlignment="Top" Width="38" Click="StartStop_Click" />
+    </Grid>
+</UserControl>
