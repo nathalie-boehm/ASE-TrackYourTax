@@ -87,7 +87,7 @@
                 <DataTrigger Binding="{Binding}" Value="Home">
                     <Setter TargetName="MenuItemIcon" Property="Kind" Value="Home"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding}" Value="Wizard">
+                <DataTrigger Binding="{Binding}" Value="Elster">
                     <Setter TargetName="MenuItemIcon" Property="Kind" Value="Assistant"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding}" Value="Orte setzen">
@@ -105,9 +105,7 @@
                 <DataTrigger Binding="{Binding}" Value="Einstellungen">
                     <Setter TargetName="MenuItemIcon" Property="Kind" Value="Settings"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding}" Value="Belege">
-                    <Setter TargetName="MenuItemIcon" Property="Kind" Value="Receipt"/>
-                </DataTrigger>
+                
             </DataTemplate.Triggers>
         </DataTemplate>
 
@@ -118,15 +116,14 @@
             <system:String>Orte setzen</system:String>
             <system:String>Strecken setzen</system:String>
             <system:String>Einstellungen</system:String>
-            <system:String>Wizard</system:String>
-            <system:String>Belege</system:String>
+            <system:String>Elster</system:String>
         </x:Array>
 
         <DataTemplate x:Key="HomeViewTemplate">
             <views:HomeView/>
         </DataTemplate>
-        <DataTemplate x:Key="TrackingViewTemplate">
-            <views:TrackingView/>
+        <DataTemplate x:Key="ElsterViewTemplate">
+            <views:ElsterView/>
         </DataTemplate>
         <DataTemplate x:Key="LocationViewTemplate">
             <views:LocationView/>

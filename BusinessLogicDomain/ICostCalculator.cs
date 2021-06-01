@@ -6,5 +6,7 @@ namespace TrackYourTax.BusinessLogicDomain
     {
         int CalculateCost(Ride ride);
         int CalculateCost(Expenses ride);
+        int ElstarCosts(Ride ride);
+        int AdditionalCateringExpenses(Ride ride);
     }
 }

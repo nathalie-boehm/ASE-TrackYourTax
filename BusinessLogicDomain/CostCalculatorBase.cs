@@ -15,23 +15,20 @@ namespace TrackYourTax.BusinessLogicDomain
         protected abstract decimal GetRideFactor(LocationCategory category);
         protected abstract decimal GetExpensesFactor(ExpensesCategory category);
 
-        public int CalculateCost(Ride ride)
+        public int CalculateCost(Ride ride) =>
+            (int)(ElstarCosts(ride) * GetRideFactor(ride.Route.Destination.LocationCategory)) +
+            AdditionalCateringExpenses(ride);
+
+        public int ElstarCosts(Ride ride)
         {
             var route = ride.Route;
             if (route == null) return 0;
-
-            var result = (int)(ride.AttendanceCounter * route.Distance * GetRideFactor(route.Destination.LocationCategory) * _settings.KilometerPrice / 100);
-
-            if (result > 0 && AdditionalCateringExpenses(ride))
-            {
-                return result + _settings.CateringAdditionalExpenses;
-            }
-
-            return result;
+            return (int)(ride.AttendanceCounter * route.Distance * _settings.KilometerPrice / 100);
         }
 
-        private bool AdditionalCateringExpenses(Ride ride) => ride.Route.Destination.LocationCategory == LocationCategory.ZweiteTaetigkeitsstaette &&
-                ride.End.Subtract(ride.Start).TotalHours >= 8;
+        public int AdditionalCateringExpenses(Ride ride)
+            => ride.Route.Destination.LocationCategory == LocationCategory.ZweiteTaetigkeitsstaette &&
+               ride.End.Subtract(ride.Start).TotalHours >= 8 && ElstarCosts(ride) > 0 ? _settings.CateringAdditionalExpenses : 0;
 
         public int CalculateCost(Expenses expenses)
         {

@@ -14,8 +14,8 @@
             <Setter Property="ContentTemplate" Value="{StaticResource HomeViewTemplate}"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ElementName=NavigationMenuListBox, Path=SelectedItem}"
-                             Value="Wizard">
-                    <Setter Property="ContentTemplate" Value="{StaticResource TrackingViewTemplate}"/>
+                             Value="Elster">
+                    <Setter Property="ContentTemplate" Value="{StaticResource ElsterViewTemplate}"/>
                 </DataTrigger>
                
                 <DataTrigger Binding="{Binding ElementName=NavigationMenuListBox, Path=SelectedItem}" 
@@ -39,10 +39,7 @@
                              Value="Einstellungen">
                     <Setter Property="ContentTemplate" Value="{StaticResource SettingsViewTemplate}"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding ElementName=NavigationMenuListBox, Path=SelectedItem}" 
-                             Value="Belege">
-                    <Setter Property="ContentTemplate" Value="{StaticResource SettingsViewTemplate}"/>
-                </DataTrigger>
+                
             </Style.Triggers>
         </Style>
     </Window.Resources>
