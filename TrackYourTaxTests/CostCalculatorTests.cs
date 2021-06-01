@@ -9,15 +9,6 @@ using TrackYourTax.Enums;
 
 namespace TrackYourTaxTests
 {
-    [TestFixture]
-    public class AdvertisingCostCalculatorTests
-    {
-    }
-
-    [TestFixture]
-    public class ExceptionalCostCalculatorTests
-    {
-    }
 
     [TestFixture]
     public class CostDirectorTests
@@ -29,6 +20,7 @@ namespace TrackYourTaxTests
         {
             _repository = Substitute.For<IRepository>();
             _repository.Settings.Returns(new List<Settings> { new Settings { KilometerPrice = 30 } });
+            _repository.GetCurrentSetting().Returns(new Settings {KilometerPrice = 30});
             _repository.Rides.Returns(new List<Ride>
             {
                 new Ride { AttendanceCounter = 100, Route =

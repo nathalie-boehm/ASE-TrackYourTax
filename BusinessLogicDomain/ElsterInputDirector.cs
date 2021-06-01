@@ -1,9 +1,9 @@
 ﻿namespace TrackYourTax.BusinessLogicDomain
 {
-    public class ElsterInputConstructor
+    public class ElsterInputDirector
     {
         private readonly ElsterInputBuilder _elsterInputBuilder;
-        public ElsterInputConstructor(ElsterInputBuilder elsterInputBuilder)
+        public ElsterInputDirector(ElsterInputBuilder elsterInputBuilder)
         {
             _elsterInputBuilder = elsterInputBuilder;
         }

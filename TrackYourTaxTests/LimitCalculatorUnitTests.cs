@@ -14,7 +14,7 @@ namespace TrackYourTaxTests
         public void GetLimitWithLowIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> {new Settings {Income = 10000, Year = 2020}});
+            repository.GetCurrentSetting().Returns(new Settings {Income = 10000, Year = 2020});
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
@@ -25,7 +25,7 @@ namespace TrackYourTaxTests
         public void GetLimitWithMaxLowIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 15339, Year = 2020 } });
+            repository.GetCurrentSetting().Returns( new Settings { Income = 15339, Year = 2020 } );
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
@@ -36,7 +36,7 @@ namespace TrackYourTaxTests
         public void GetLimitWithMinMiddleIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 15340, Year = 2020 } });
+            repository.GetCurrentSetting().Returns( new Settings { Income = 15340, Year = 2020 });
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
@@ -47,7 +47,7 @@ namespace TrackYourTaxTests
         public void GetLimitWithMiddleIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 35000, Year = 2020 } });
+            repository.GetCurrentSetting().Returns(new Settings { Income = 35000, Year = 2020 } );
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
@@ -58,7 +58,7 @@ namespace TrackYourTaxTests
         public void GetLimitWithMaxMiddleIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 51129, Year = 2020 } });
+            repository.GetCurrentSetting().Returns( new Settings { Income = 51129, Year = 2020 } );
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
@@ -69,7 +69,7 @@ namespace TrackYourTaxTests
         public void GetLimitWithMinHighIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 51130, Year = 2020 } });
+            repository.GetCurrentSetting().Returns( new Settings { Income = 51130, Year = 2020 });
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
@@ -80,34 +80,13 @@ namespace TrackYourTaxTests
         public void GetLimitWithHighIncomeTest()
         {
             var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 100000, Year = 2020 } });
+            repository.GetCurrentSetting().Returns( new Settings { Income = 100000, Year = 2020  });
 
             var testee = new LimitCalculator(repository);
             var limit = testee.GetExtraordinaryExpenseLimit();
             Assert.AreEqual(limit, 7000);
         }
 
-        [Test]
-        public void GetLimitOutOfTwoDescendingSettingsTest()
-        {
-            var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 10000, Year = 2020 }, new Settings { Income =9000, Year = 2019 },  new Settings { Income = 8000, Year = 2018 } });
-
-            var testee = new LimitCalculator(repository);
-            var limit = testee.GetExtraordinaryExpenseLimit();
-            Assert.AreEqual(limit, 500);
-        }
-
-        [Test]
-        public void GetLimitOutOfTwoAscendingSettingsTest()
-        {
-            var repository = Substitute.For<IRepository>();
-            repository.Settings.Returns(new List<Settings> { new Settings { Income = 8000, Year = 2018 }, new Settings { Income = 9000, Year = 2019 }, new Settings { Income = 10000, Year = 2020 }});
-
-            var testee = new LimitCalculator(repository);
-            var limit = testee.GetExtraordinaryExpenseLimit();
-            Assert.AreEqual(limit, 500);
-        }
          
     }
 }

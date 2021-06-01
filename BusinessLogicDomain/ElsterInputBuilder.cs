@@ -26,6 +26,7 @@ namespace TrackYourTax.BusinessLogicDomain
         {
             var rides = _repository.Rides.FindAll(ride =>
                 ride.Route.Destination.LocationCategory == LocationCategory.ErsteTaetigkeitsstaette);
+            rides.ForEach(ride => AddToContent(ride));
         }
 
         public void ConstructRidesSecondEmployment()
@@ -42,6 +43,11 @@ namespace TrackYourTax.BusinessLogicDomain
 
         public void Build()
         {
+        }
+
+        private void AddToContent(Ride ride)
+        {
+            _content.AppendLine($"Zeiraum{_delimiter} von {ride.Start}{_delimiter} bis {ride.End}{_delimiter} davon abwesend {ride.AbsenceCounter} Tage");
         }
 
         private void AddToContent(Expenses expense)
